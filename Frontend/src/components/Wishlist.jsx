@@ -6,30 +6,7 @@ const Wishlist = ({ wishlistProducts }) => {
 
 
 // Dummy Data for test which i pass thorugh props like this :- <Wishlist wishlistProducts={products}/>
-// const products = [
-//   {
-//       id: 2,
-//       name: "Grill Ultimate Bundle",
-//       image: "https://images.unsplash.com/photo-1567016526105-22da7c13161a?q=80&w=1780&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-//       price: 549.99,
-//       quantity: 1,
-//       details: "Add accident protection for ₹29.99",
-//   },
-//   {
-//       id: 3,
-//       name: "Starters (4 pack)",
-//       image: "https://unsplash.com/photos/a-chair-sitting-in-front-of-a-window-in-a-room-z9edjs3WF80",
-//       price: 0.0,
-//       quantity: 1,
-//   },
-//   {
-//       id: 4,
-//       name: "Charcoal Grill Pack",
-//       image: "https://plus.unsplash.com/premium_photo-1668073437554-b48d66e9f368?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-//       price: 0.0,
-//       quantity: 1,
-//   },
-// ];
+
 
 
   const [wishListNum, setWishListNum] = useState(0);
@@ -61,7 +38,7 @@ const Wishlist = ({ wishlistProducts }) => {
                 <h3 className="text-xl font-semibold">{product.name}</h3>
                 <p className="text-gray-500">{product.description}</p>
                 <div className="flex justify-between items-center mt-2">
-                  <p className="text-lg font-bold">${product.price}</p>
+                  <p className="text-lg font-bold">₹{product.price}</p>
                   <button
                     onClick={() => handleRemoveFromWishlist(product.id)}
                     className="text-red-500 hover:text-red-700"
