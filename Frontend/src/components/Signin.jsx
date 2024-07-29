@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { MdEmail } from "react-icons/md";
 import { RiLockPasswordLine } from "react-icons/ri";
-import loginimg from "../assets/signin-up/signin-image.jpg"
+import loginimg from "../assets/signin-up/signin-image.jpg";
 import { Link } from "react-router-dom";
 import toast from "react-hot-toast";
 import axios from "axios";
@@ -19,29 +19,35 @@ const Signin = () => {
       [name]: value,
     }));
   };
-  const navigate =useNavigate()
-  const handleSubmit = async(e)=>{
-  e.preventDefault();
-  try {
-    const response = await axios.post('http://localhost:4000/user/login',User)
-    const token = response.data.token;
-    if (token) {
-      localStorage.setItem('token', token);
-    } else {
-      console.error('No token received from the server.');
+  const navigate = useNavigate();
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await axios.post(
+        "http://localhost:4000/user/login",
+        User
+      );
+      const token = response.data.token;
+      if (token) {
+        localStorage.setItem("token", token);
+        toast.success("Login successfull");
+        setUser({ email: "", password: "" });
+        navigate("/");
+        setTimeout(()=>{
+          window.location.reload()
+        },1500)
+      } else {
+        console.error("No token received from the server.");
+      }
+    } catch (error) {
+      toast.error("Error login");
     }
-    toast.success("Login successfull");
-   } catch (error) {
-    toast.error("Error login")
-   }
-   setUser({ email: '', password: '' });
-   navigate('/')
-  }
+  };
   return (
     <>
       <section className="flex justify-center items-center h-[100vh] m-7 z-10">
         <div className="shadow-gray-400 shadow-lg py-11 md:flex  md:items-center bg-[#fff]  rounded-xl w-[600px] md:h-[600px] md:w-[55rem] ">
-        <div className="mx-12 mt-11 md:block hidden">
+          <div className="mx-12 mt-11 md:block hidden">
             <div>
               <img src={loginimg} alt="login image" className="w-full" />
             </div>
@@ -88,13 +94,23 @@ const Signin = () => {
                 Log In
               </button>
               <div>
-               <div className="my-4 bg-[#007bff] font-bold cursor-pointer text-white rounded-md text-center p-2">
-                <p><span></span>Log in with google</p>
-               </div>
+                <div className="my-4 bg-[#007bff] font-bold cursor-pointer text-white rounded-md text-center p-2">
+                  <p>
+                    <span></span>Log in with google
+                  </p>
+                </div>
               </div>
               <div className="mt-6 font-semibold text-md">
-                <p>Create an  Account <Link to={'/signup'} className="cursor-pointer text-slate-600 hover:underline">Register</Link></p>
-               </div>
+                <p>
+                  Create an Account{" "}
+                  <Link
+                    to={"/signup"}
+                    className="cursor-pointer text-slate-600 hover:underline"
+                  >
+                    Register
+                  </Link>
+                </p>
+              </div>
             </form>
           </div>
         </div>

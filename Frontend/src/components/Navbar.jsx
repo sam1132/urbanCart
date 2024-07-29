@@ -19,7 +19,6 @@ const Navbar = () => {
       setIsAuthenticated(true);
     }
   }, []);
-
   const handleLogout = () => {
     localStorage.removeItem('token');
     setIsAuthenticated(false);
