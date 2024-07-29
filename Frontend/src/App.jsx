@@ -15,26 +15,29 @@ import ProtectRoute from "./components/ProtectRoute";
 function App() {
   const products = [
     {
-        id: 2,
-        name: "Grill Ultimate Bundle",
-        image: "https://images.unsplash.com/photo-1567016526105-22da7c13161a?q=80&w=1780&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-        price: 549.99,
-        quantity: 1,
-        details: "Add accident protection for ₹29.99",
+      id: 2,
+      name: "Grill Ultimate Bundle",
+      image:
+        "https://images.unsplash.com/photo-1567016526105-22da7c13161a?q=80&w=1780&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      price: 549.99,
+      quantity: 1,
+      details: "Add accident protection for ₹29.99",
     },
     {
-        id: 3,
-        name: "Starters (4 pack)",
-        image: "https://unsplash.com/photos/a-chair-sitting-in-front-of-a-window-in-a-room-z9edjs3WF80",
-        price: 0.0,
-        quantity: 1,
+      id: 3,
+      name: "Starters (4 pack)",
+      image:
+        "https://unsplash.com/photos/a-chair-sitting-in-front-of-a-window-in-a-room-z9edjs3WF80",
+      price: 0.0,
+      quantity: 1,
     },
     {
-        id: 4,
-        name: "Charcoal Grill Pack",
-        image: "https://plus.unsplash.com/premium_photo-1668073437554-b48d66e9f368?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-        price: 0.0,
-        quantity: 1,
+      id: 4,
+      name: "Charcoal Grill Pack",
+      image:
+        "https://plus.unsplash.com/premium_photo-1668073437554-b48d66e9f368?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      price: 0.0,
+      quantity: 1,
     },
   ];
   return (
@@ -42,21 +45,21 @@ function App() {
       <Router>
         <Navbar />
         <Routes>
-        <Route path="/Wishlist" element={<Wishlist wishlistProducts={products} />} />
-        {/* 
           <Route path="/" element={<Home />} />
           <Route path="/signup" element={<Signup />} />
           <Route element={<ProtectRoute />}>
-         
+            <Route
+              path="/Wishlist"
+              element={<Wishlist wishlistProducts={products} />}
+            />
             <Route path="/cart" element={<CartPage />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/my-order" element={<Myorder />} />
           </Route>
           <Route path="/signin" element={<Signin />} />
 
-           <Route path='/cards' element={<Card/>}/> 
-        */}
-        </Routes> 
+          <Route path="/cards" element={<Card />} />
+        </Routes>
         <Toaster />
         <Footer />
       </Router>
