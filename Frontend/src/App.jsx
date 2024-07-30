@@ -7,7 +7,8 @@ import Home from "./components/Home";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Wishlist from "./components/Wishlist";
-import ProfileDetail from "./components/ProfileDetails";
+import Profile from "./components/Profile";
+import Profiledetail from './components/ProfileDetails'
 import Myorder from "./components/Myorder";
 import CartPage from "./components/CartPage";
 import { Toaster } from "react-hot-toast";
@@ -53,7 +54,8 @@ function App() {
               element={<Wishlist wishlistProducts={products} />}
             />
             <Route path="/cart" element={<CartPage />} />
-            <Route path="/profile" element={<ProfileDetail />} />
+            <Route path="/profile" element={<Profile />} />
+            <Route path="/profileDetails" element={<Profiledetail />} />
             <Route path="/my-order" element={<Myorder />} />
           </Route>
           <Route path="/signin" element={<Signin />} />
