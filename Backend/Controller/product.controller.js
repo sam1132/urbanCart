@@ -11,12 +11,17 @@ export const getProduct=async(req,res)=>{
     }
     }
 
-    export const getProductById = (req, res) => {
-        const product = data.find(p => p.id === req.params.id);
-        if (product) {
-            res.json(product);
-        } else {
-            res.status(404).json({ message: 'Product not found' });
+    export const getProductById = async (req, res) => {
+        try {
+            const { id } = req.params;
+            const product = await Product.findOne({id});
+            if (product) {
+                res.json(product);
+            } else {
+                res.status(404).json({ message: 'Product not found' });
+            }
+        } catch (error) {
+            res.status(500).json({ message: 'Server error', error: error.message });
         }
     };
 
