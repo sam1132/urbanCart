@@ -43,7 +43,17 @@ const userSchema = new mongoose.Schema({
   role:{
     type:Boolean,
     default:false
-  }
+  },
+  orders: [{
+    product: { type: mongoose.Schema.Types.ObjectId, ref: "Product" },
+    quantity: { type: Number, required: true },
+    status: { type: String, default: "Pending" },
+    orderDate: { type: Date, default: Date.now }
+  }],
+  wishlist: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Product"
+  }]
 },{timestamps:true});
 
 const User = mongoose.model("user", userSchema);
