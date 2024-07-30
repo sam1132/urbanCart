@@ -8,8 +8,18 @@ const productSchema = new mongoose.Schema(
     ratings:{type:String,required:true},
     description: { type: String, required: true },
     price: { type: Number, required: true },
-    category: { type: String, required: true },
-    sizes: {
+    category: {
+      male:{type:Boolean,default:false},
+      topwear:{type:Boolean,default:false},
+      bottomwear:{type:Boolean,default:false},
+      sneaker:{type:Boolean,default:false},
+      women:{type:Boolean,default:false},
+      kids:{type:Boolean,default:false},
+      furniture:{type:Boolean,default:false},
+      books:{type:Boolean,default:false},
+      homedecore:{type:Boolean,default:false},
+      },
+    size: {
       type: [String],
       required: false,
     },

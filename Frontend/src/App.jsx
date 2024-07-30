@@ -13,6 +13,7 @@ import Myorder from "./components/Myorder";
 import CartPage from "./components/CartPage";
 import { Toaster } from "react-hot-toast";
 import ProtectRoute from "./components/ProtectRoute";
+import Products from "./components/Products";
 function App() {
   const products = [
     {
@@ -48,6 +49,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/signup" element={<Signup />} />
+          <Route path="/products" element={<Products/>}/>
           <Route element={<ProtectRoute />}>
             <Route
               path="/Wishlist"
