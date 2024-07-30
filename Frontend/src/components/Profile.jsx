@@ -33,13 +33,13 @@ const handleClick = ()=>{
     navigate("/profileDetails")
 }
   return (
-    <div className="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl">
+    <div className="max-w-md my-10 mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl">
       <div className="md:flex">
         <div className="p-8">
           <h2 className="text-2xl font-bold text-gray-900 mb-4">welcome</h2>
           <div className="space-y-4">
-            <p className="text-gray-600"><strong>Email:</strong> {user.email || 'Not provided'}</p>
             <p className="text-gray-600"><strong>Full Name:</strong> {user.username || 'Not provided'}</p>
+            <p className="text-gray-600"><strong>Email:</strong> {user.email || 'Not provided'}</p>
             <p className="text-gray-600"><strong>Phone No:</strong> {user.phoneNo || 'Not provided'}</p>
             <p className="text-gray-600"><strong>Address:</strong> {user.address || 'Not provided'}</p>
             <p className="text-gray-600"><strong>Landmark:</strong> {user.landMark || 'Not provided'}</p>
