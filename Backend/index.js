@@ -5,6 +5,7 @@ import connectDb from './db/connectdb.js'
 import categoryRoute from './route/category.route.js'
 import userRoute from './route/user.route.js'
 import wishlistRoute from './route/wishlist.route.js'
+import ProductRoute from './route/product.route.js'
 dotenv.config()
 const port = process.env.PORT || 4001
 const app = express()
