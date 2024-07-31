@@ -7,8 +7,6 @@ const SpecificProduct = () => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  console.log("Main Category:", maincategory);
-  console.log("Sub Category:", subCategory);
   useEffect(() => {
     const fetchProducts = async () => {
       try {
