@@ -5,6 +5,6 @@ const router = express.Router()
 
 router.get('/productlist',getProduct)
 router.get('/products/:id', getProductById);
-router.get('/category/:category', getProductsByCategory);
+router.get('/:mainCategory/:subCategory', getProductsByCategory);
 
 export default router

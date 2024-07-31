@@ -3,8 +3,10 @@ import axios from "axios";
 import Carousels from "./Carousels";
 import { FaLayerGroup } from "react-icons/fa";
 import SpecialOffer from "./SpecialOffer";
+import { useNavigate } from 'react-router-dom'
 const Home = () => {
   const [categoryData, setCategoryData] = useState([]);
+  const navigate = useNavigate();
   useEffect(() => {
     const getCategory = async () => {
       try {
@@ -17,7 +19,10 @@ const Home = () => {
     getCategory();
   }, []);
 
-  const renderSubCategories = (subCategories) => {
+  const handleSubCategoryClick = (maincategory,subCategory) => {
+    navigate(`/products/${maincategory}/${subCategory.name}`);
+  };
+  const renderSubCategories = (maincategory,subCategories) => {
     if (!subCategories || subCategories.length === 0) {
       console.log("No subcategories to render");
       return null;
@@ -27,6 +32,7 @@ const Home = () => {
         {subCategories.map((subCategory, index) => (
           <div
             key={index}
+            onClick={() => handleSubCategoryClick(maincategory,subCategory)}
             className="cursor-pointer rounded-md overflow-hidden"
           >
             <div>
@@ -61,20 +67,20 @@ const Home = () => {
         </div>
         <div className="my-8 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-x-4 gap-y-4">
           {categoryData.length > 0 &&
-            renderSubCategories(categoryData[0].main.subCategory)}
+            renderSubCategories('main',categoryData[0].main.subCategory)}
         </div>
         <div className="my-8">
           <h1 className="text-xl font-bold lg:text-3xl">{`Shop For ${categoryData[0]?.men?.name}`}</h1>
           <div className="mt-5 grid grid-cols-2 lg:grid-cols-4 gap-x-4 gap-y-4">
             {categoryData.length > 0 &&
-              renderSubCategories(categoryData[0].men.subCategory)}
+              renderSubCategories('male',categoryData[0].men.subCategory)}
           </div>
         </div>
         <div className="my-8">
           <h1 className="text-xl font-bold lg:text-3xl">{`Shop For ${categoryData[0]?.women?.name}`}</h1>
           <div className="mt-5 grid grid-cols-2 lg:grid-cols-4 gap-x-4 gap-y-4">
             {categoryData.length > 0 &&
-              renderSubCategories(categoryData[0].women.subCategory)}
+              renderSubCategories('women',categoryData[0].women.subCategory)}
           </div>
         </div>
 
@@ -82,7 +88,7 @@ const Home = () => {
           <h1 className="text-xl font-bold lg:text-3xl">{`Shop For ${categoryData[0]?.kids?.name}`}</h1>
           <div className="mt-5 grid grid-cols-2 lg:grid-cols-4 gap-x-4 gap-y-4">
             {categoryData.length > 0 &&
-              renderSubCategories(categoryData[0].kids.subCategory)}
+              renderSubCategories('kids',categoryData[0].kids.subCategory)}
           </div>
         </div>
         <SpecialOffer />

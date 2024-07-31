@@ -25,21 +25,36 @@ export const getProduct=async(req,res)=>{
         }
     };
 
-    export const getProductsByCategory =async (req, res) => {
-        const {category} = req.params; 
+    export const getProductsByCategory = async (req, res) => {
+        let { mainCategory, subCategory } = req.params;
+        const queryFieldSub = `category.${subCategory}`;
+        const queryFieldMain = `category.${mainCategory}`;
+      
         try {
-            const product = await Product.find()
-            const filteredProducts = product.filter((product) => {
-                if( product.category.hasOwnProperty(category) && product.category[category]){
-                    return product;
-                }
-            });
-            if (filteredProducts.length > 0) {
-                res.json(filteredProducts);
-            } else {
-                res.status(404).json({ message: 'No products found for this category' });
-            }
+          let query;
+      
+          if (mainCategory === "main") {
+            query = {
+              [queryFieldSub]: true
+            };
+          } else {
+            query = {
+              [queryFieldMain]: true,
+              [queryFieldSub]: true
+            };
+          }
+      
+          const products = await Product.find(query);
+          console.log(products);
+      
+          if (products.length > 0) {
+            res.json(products);
+          } else {
+            res.status(404).json({ message: 'No products found for this category' });
+          }
         } catch (error) {
-            res.status(500).json({message:'Server error'})
+          res.status(500).json({ message: 'Server error' });
         }
-    };
+      };
+      
+      
