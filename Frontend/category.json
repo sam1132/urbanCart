@@ -1,0 +1,38 @@
+{
+    "main": {
+      "name": "Category",
+      "subCategory": [
+        { "name": "Electronics", "image": "https://vue.ai/blog/wp-content/uploads/2020/09/electronics-e-commerce.jpg" },
+        { "name": "Fashion", "image": "https://dutchuncles.in/wp-content/uploads/2021/02/Tech-trends-to-rule-in-fashion-e-commerce-feature-01.jpg" },
+        { "name": "Shoes", "image": "https://5.imimg.com/data5/SELLER/Default/2022/11/YV/ZF/YO/116453489/white-casual-shoes-for-men.jpg" },
+        { "name": "HomeDecor", "image": "https://homafy.com/wp-content/uploads/2023/05/Modern-Home-Metal-Wall-Art.jpeg" },
+        { "name": "Furniture", "image": "https://voyado.com/wp-content/uploads/2023/05/furniture-ecommerce.jpg" },
+        { "name": "Books", "image": "https://grind.studio/wp-content/uploads/2021/11/Entrepreneurship-books-scaled.jpg" }
+      ]
+    },
+    "men": {
+      "name": "Men",
+      "subCategory": [
+        { "name": "TopWear", "image": "https://media.istockphoto.com/id/1320367916/photo/man-wearing-black-blank-t-shirt-and-a-black-baseball-cap-with-space-for-your-logo-or-design.webp?b=1&s=170667a&w=0&k=20&c=67V3QolLmqaZftA9j_k32vXi98CkROtlHOHDuvmgFvM=" },
+        { "name": "FootWear", "image": "https://5.imimg.com/data5/SELLER/Default/2022/11/YV/ZF/YO/116453489/white-casual-shoes-for-men.jpg" },
+        { "name": "Sports", "image": "https://media.istockphoto.com/id/144808221/photo/sports-equipment-with-rackets-and-balls.webp?b=1&s=170667a&w=0&k=20&c=Deb3L3aVicQH-KjwCHiuzmu6U6roNfgltwW5qP1lm7w=" },
+        { "name": "Accessories", "image": "https://images.unsplash.com/3/www.madebyvadim.com.jpg?q=80&w=1782&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" }
+      ]
+    },
+    "women": {
+      "name": "Women",
+      "subCategory": [
+        { "name": "TopWear", "image": "https://img.joomcdn.net/34e107e7db91a672739e9bef0a03b09eec981552_original.jpeg" },
+        { "name": "FootWear", "image": "https://admin.mochishoes.com/product/33-643/660/33-643LA11.jpg" },
+        { "name": "Sports", "image": "https://media.istockphoto.com/id/144808221/photo/sports-equipment-with-rackets-and-balls.webp?b=1&s=170667a&w=0&k=20&c=Deb3L3aVicQH-KjwCHiuzmu6U6roNfgltwW5qP1lm7w=" },
+        { "name": "Accessories", "image": "https://images.unsplash.com/3/www.madebyvadim.com.jpg?q=80&w=1782&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" }
+      ]
+    },
+    "kids": {
+      "name": "Kids",
+      "subCategory": [
+        { "name": "Toys", "image": "https://img.freepik.com/free-photo/front-view-kid-playing-with-wooden-toyds_23-2149357210.jpg?t=st=1721994082~exp=1721997682~hmac=5b83a2be6c51a5c3fb5daf130288bf016e870a8a9c9e08915898acb8e118c85a&w=996" },
+        { "name": "Cloths", "image": "https://img.freepik.com/premium-photo/kids-clothes-hanging-shelf-store_550617-75350.jpg" }
+      ]
+    }
+  }

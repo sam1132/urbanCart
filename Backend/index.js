@@ -4,7 +4,7 @@ import cors from 'cors'
 import connectDb from './db/connectdb.js'
 import categoryRoute from './route/category.route.js'
 import userRoute from './route/user.route.js'
-// import wishlistRoute from './route/wishlist.route.js'
+import wishlistRoute from './route/wishlist.route.js'
 import ProductRoute from './route/product.route.js'
 dotenv.config()
 const port = process.env.PORT || 4001
@@ -17,7 +17,7 @@ app.use(express.json())
 app.use('/',categoryRoute)
 app.use('/user',userRoute)
 app.use('/product',ProductRoute)
-// app.use('/wishlist',wishlistRoute)
+app.use('/wishlist',wishlistRoute)
 
 
 app.listen(port, () => {
