@@ -51,7 +51,8 @@ const userSchema = new mongoose.Schema({
     orderDate: { type: Date, default: Date.now }
   }],
   wishlist: [{
-    type: String,
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Product"
   }]
 },{timestamps:true});
 
