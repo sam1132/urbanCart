@@ -5,7 +5,6 @@ export const addWishlist = async (req,res) => {
     const id = req.params.id;
     const user = await User.findById(req.userId);
     const product = await Product.findOne({ id });
-    console.log(product)
     if (!product) {
       return res.status(404).json({ message: "Product not found" });
   }
@@ -29,25 +28,16 @@ console.log(productId)
   }
 };
 
-export const getWishlist = async(req,res)=>{
-    try {
-      console.log("enterd the funciton");
-      const user = await User.findById(req.userId);
-      const wishListArr = await Promise.all(
-        user.wishlist.map(async (productId) => {
-            return await Product.findById(productId);
-        })
-    );
-    console.log(wishListArr)
-    
+export const getWishlist = async (req, res) => {
+  try {
+      const user = await User.findById(req.user.id).populate('wishlist');
+      if (!user) {
+          return res.status(404).json({ message: 'User not found' });
+      }
 
-      console.log(wishlist);
-      // for (let i = 0; i < wishlistArr.length; i++) {
-      //   const prod = await Product.findOne({productId:wishlistArr[i]});
-      //   wishlist.push(prod);
-      // }
-  res.status(200).json(wishlist)
-    } catch (error) {
-      res.status(500);
-    }
-}
+      res.status(200).json(user.wishlist);
+  } catch (error) {
+      console.error('Error fetching wishlist:', error);
+      res.status(500).json({ message: 'Server error', error: error.message });
+  }
+};
