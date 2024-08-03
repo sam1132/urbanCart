@@ -45,7 +45,6 @@ export const getProduct=async(req,res)=>{
           }
       
           const products = await Product.find(query);
-          console.log(products);
       
           if (products.length > 0) {
             res.json(products);

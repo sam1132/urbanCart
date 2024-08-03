@@ -4,11 +4,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const Wishlist = ({ wishlistProducts }) => {
 
-
-// Dummy Data for test which i pass thorugh props like this :- <Wishlist wishlistProducts={products}/>
-
-
-
   const [wishListNum, setWishListNum] = useState(0);
   const [wishlist, setWishlist] = useState([]);
 

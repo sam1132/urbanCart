@@ -1,11 +1,32 @@
 import React, { useState } from "react";
 import "@fortawesome/fontawesome-free/css/all.min.css";
-
+import axios from 'axios'
+import toast from 'react-hot-toast'
 const Card = ({ product }) => {
   const [liked, setLiked] = useState(false);
 
-  const toggleLike = () => {
-    setLiked(!liked);
+  const toggleLike = async() => {
+    try {
+      const token = localStorage.getItem('token')
+      const config = {
+        headers: {
+            Authorization: `Bearer ${token}`, 
+          },
+    }
+    const id = product.id
+
+      const response = await axios.post(`http://localhost:4000/wishlist/add/${id}`,{},config)
+      if(response.status === 200){
+        toast.success("Product added to wishlist")
+        setLiked(!liked);
+      }
+    } catch (error) {
+      if (error.response && error.response.status === 400) {
+        toast.error("Product already in wishlist");
+      } else {
+        toast.error("Error adding product");
+      }
+    }
   };
 
   const truncateDescription = (description, maxLength) => {
