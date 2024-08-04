@@ -1,15 +1,29 @@
 import React, { useEffect, useState } from 'react';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-
-const Wishlist = ({ wishlistProducts }) => {
+import axios from 'axios'
+import toast from 'react-hot-toast'
+const Wishlist = () => {
 
   const [wishListNum, setWishListNum] = useState(0);
   const [wishlist, setWishlist] = useState([]);
-
+  const token = localStorage.getItem('token')
+  const config = {
+    headers: {
+        Authorization: `Bearer ${token}`, 
+      },
+}
   useEffect(() => {
-    setWishlist(wishlistProducts);
-  }, [wishlistProducts]);
+      const getWishlist = async ()=>{
+        try {
+          const response = await axios.get("http://localhost:4000/wishlist/getwishlist",config)
+          setWishlist(response.data)
+        } catch (error) {
+          toast.error("Error Fetching Wishlist")
+        }
+      };
+      getWishlist()
+  }, [wishlist]);
 
   useEffect(() => {
     setWishListNum(wishlist.length);
@@ -17,6 +31,10 @@ const Wishlist = ({ wishlistProducts }) => {
 
   const handleRemoveFromWishlist = (id) => {
     setWishlist((prevWishlist) => prevWishlist.filter((product) => product.id !== id));
+  };
+  const truncateDescription = (description, maxLength) => {
+    if (description.length <= maxLength) return description;
+    return description.slice(0, maxLength) + '...';
   };
 
   return (
@@ -30,8 +48,8 @@ const Wishlist = ({ wishlistProducts }) => {
             <div key={product.id} className="relative bg-white p-4 rounded-lg shadow-lg">
               <img src={product.image} alt={product.name} className="w-full h-48 object-cover rounded-t-lg" />
               <div className="p-2">
-                <h3 className="text-xl font-semibold">{product.name}</h3>
-                <p className="text-gray-500">{product.description}</p>
+                <h3 className="text-xl font-semibold">{truncateDescription(product.title, 50)}</h3>
+                <p className="text-gray-500"> {truncateDescription(product.description, 100)}</p>
                 <div className="flex justify-between items-center mt-2">
                   <p className="text-lg font-bold">₹{product.price}</p>
                   <button
