@@ -29,8 +29,13 @@ const Wishlist = () => {
     setWishListNum(wishlist.length);
   }, [wishlist]);
 
-  const handleRemoveFromWishlist = (id) => {
-    setWishlist((prevWishlist) => prevWishlist.filter((product) => product.id !== id));
+  const handleRemoveFromWishlist = async (id) => {
+    try {
+      await axios.delete(`http://localhost:4000/wishlist/remove/${id}`,config)
+      toast.success("Product removed from wishlist")
+    } catch (error) {
+      toast.error("Error removing product")
+    }
   };
   const truncateDescription = (description, maxLength) => {
     if (description.length <= maxLength) return description;
