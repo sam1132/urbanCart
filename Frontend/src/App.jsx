@@ -17,33 +17,7 @@ import Products from "./components/Products";
 import SpecificProduct from "./components/SpecificProduct";
 import GoogleLogin from "./components/GoogleLogin";
 function App() {
-  const products = [
-    {
-      id: 2,
-      name: "Grill Ultimate Bundle",
-      image:
-        "https://images.unsplash.com/photo-1567016526105-22da7c13161a?q=80&w=1780&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      price: 549.99,
-      quantity: 1,
-      details: "Add accident protection for ₹29.99",
-    },
-    {
-      id: 3,
-      name: "Starters (4 pack)",
-      image:
-        "https://unsplash.com/photos/a-chair-sitting-in-front-of-a-window-in-a-room-z9edjs3WF80",
-      price: 0.0,
-      quantity: 1,
-    },
-    {
-      id: 4,
-      name: "Charcoal Grill Pack",
-      image:
-        "https://plus.unsplash.com/premium_photo-1668073437554-b48d66e9f368?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      price: 0.0,
-      quantity: 1,
-    },
-  ];
+  
   return (
     <>
       <Router>
@@ -57,7 +31,7 @@ function App() {
           <Route element={<ProtectRoute />}>
             <Route
               path="/Wishlist"
-              element={<Wishlist wishlistProducts={products} />}
+              element={<Wishlist />}
             />
             <Route path="/cart" element={<CartPage />} />
             <Route path="/profile" element={<Profile />} />
