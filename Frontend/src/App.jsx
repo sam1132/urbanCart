@@ -15,6 +15,7 @@ import { Toaster } from "react-hot-toast";
 import ProtectRoute from "./components/ProtectRoute";
 import Products from "./components/Products";
 import SpecificProduct from "./components/SpecificProduct";
+import GoogleLogin from "./components/GoogleLogin";
 function App() {
   const products = [
     {
@@ -52,6 +53,7 @@ function App() {
           <Route path="/signup" element={<Signup />} />
           <Route path="/products" element={<Products/>}/>
           <Route path="/products/:maincategory/:subCategory" element={<SpecificProduct/>}/>
+          <Route path="/googlelogin" element={<GoogleLogin/>}/>
           <Route element={<ProtectRoute />}>
             <Route
               path="/Wishlist"

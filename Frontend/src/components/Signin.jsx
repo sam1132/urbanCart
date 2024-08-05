@@ -6,7 +6,6 @@ import { Link } from "react-router-dom";
 import toast from "react-hot-toast";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-
 const Signin = () => {
   const [User, setUser] = useState({
     email: "",
@@ -96,13 +95,13 @@ const Signin = () => {
               <div>
                 <div className="my-4 bg-[#007bff] font-bold cursor-pointer text-white rounded-md text-center p-2">
                   <p>
-                    <span></span>Log in with google
+                    <span >Log in with google</span>
                   </p>
                 </div>
               </div>
               <div className="mt-6 font-semibold text-md">
                 <p>
-                  Create an Account{" "}
+                  Create an Account
                   <Link
                     to={"/signup"}
                     className="cursor-pointer text-slate-600 hover:underline"
