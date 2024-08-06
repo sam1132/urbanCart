@@ -34,7 +34,7 @@ const Signin = () => {
         navigate("/");
         setTimeout(()=>{
           window.location.reload()
-        },1500)
+        },1000)
       } else {
         console.error("No token received from the server.");
       }
