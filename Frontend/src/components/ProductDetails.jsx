@@ -20,7 +20,7 @@ const ProductDetails = () => {
     },[id])
     return (
         <section className="py-5 my-5">
-            <div className="container mx-auto">
+            <div className="container mx-auto lg:px-8">
                 <div className="flex flex-wrap -mx-4">
                     <aside className="w-full lg:w-1/2 px-4 mb-4 lg:mb-0">
                         <div className="border rounded-lg mb-3 flex justify-center">
@@ -66,7 +66,6 @@ const ProductDetails = () => {
 
                             <div className="flex items-center mt-3 space-x-2">
                                 <a href="#" className="btn bg-blue-500 text-white shadow-0 px-4 py-2 rounded">Add to cart</a>
-                                <a href="#" className="btn bg-gray-200 border px-4 py-2 rounded">Wishlist</a>
                             </div>
 
                             <div className="flex items-center mb-2 mt-4">
