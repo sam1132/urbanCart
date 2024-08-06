@@ -16,6 +16,7 @@ import ProtectRoute from "./components/ProtectRoute";
 import Products from "./components/Products";
 import SpecificProduct from "./components/SpecificProduct";
 import GoogleLogin from "./components/GoogleLogin";
+import ProductDetails from "./components/ProductDetails";
 function App() {
   
   return (
@@ -26,6 +27,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/products" element={<Products/>}/>
+          <Route path="/productsdetails/:id" element={<ProductDetails/>}/>
           <Route path="/products/:maincategory/:subCategory" element={<SpecificProduct/>}/>
           <Route path="/googlelogin" element={<GoogleLogin/>}/>
           <Route element={<ProtectRoute />}>

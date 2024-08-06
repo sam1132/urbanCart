@@ -14,7 +14,9 @@ export const getProduct=async(req,res)=>{
     export const getProductById = async (req, res) => {
         try {
             const { id } = req.params;
+            console.log(id)
             const product = await Product.findOne({id});
+            console.log(product)
             if (product) {
                 res.json(product);
             } else {
