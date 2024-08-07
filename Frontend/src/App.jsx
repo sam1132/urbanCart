@@ -17,6 +17,7 @@ import Products from "./components/Products";
 import SpecificProduct from "./components/SpecificProduct";
 import GoogleLogin from "./components/GoogleLogin";
 import ProductDetails from "./components/ProductDetails";
+import PaymentGateway from "./components/PaymentGateway";
 function App() {
   
   return (
@@ -38,7 +39,8 @@ function App() {
             <Route path="/cart" element={<CartPage />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/profileDetails" element={<Profiledetail />} />
-            <Route path="/my-order" element={<Myorder />} />
+            <Route path="/payment" element={<PaymentGateway />} />
+            <Route path="/myorder" element={<Myorder />} />
           </Route>
           <Route path="/signin" element={<Signin />} />
 

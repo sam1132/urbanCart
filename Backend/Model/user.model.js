@@ -45,10 +45,8 @@ const userSchema = new mongoose.Schema({
     default:false
   },
   orders: [{
-    product: { type: mongoose.Schema.Types.ObjectId, ref: "Product" },
-    quantity: { type: Number, required: true },
-    status: { type: String, default: "Pending" },
-    orderDate: { type: Date, default: Date.now }
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "MyOrder"
   }],
   wishlist: [{
     type: mongoose.Schema.Types.ObjectId,

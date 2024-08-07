@@ -121,7 +121,7 @@ const Navbar = () => {
                         Wishlist
                       </NavLink>
                       <NavLink
-                        to="/my-order"
+                        to="/myorder"
                         className="flex items-center gap-x-2 px-4 py-2 text-lg text-gray-700 hover:text-black hover:bg-gray-100"
                         role="menuitem"
                       >
@@ -217,7 +217,7 @@ const Navbar = () => {
                   Wishlist
                 </NavLink>
                 <NavLink
-                  to="/my-order"
+                  to="/myorder"
                   className="text-gray-700 hover:text-black block px-3 py-2 rounded-md text-base font-medium"
                 >
                   My order

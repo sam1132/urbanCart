@@ -13,7 +13,6 @@ export const addWishlist = async (req, res) => {
       user.wishlist = [];
     }
     const productId = product._id;
-    console.log(productId);
     if (!user.wishlist.includes(productId)) {
       user.wishlist.push(productId);
       await user.save();

@@ -1,12 +1,13 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 const ProductDetails = () => {
     const {id} = useParams()
     const [data,setData] = useState({})
     const [error,setError] = useState()
+    const [products, setProducts] = useState([]); 
+    const navigate = useNavigate()
     useEffect(()=>{
-        console.log("dd",id)
        const details = async ()=>{
         try {
             const response = await axios.get(`http://localhost:4000/product/products/${id}`)
@@ -18,6 +19,29 @@ const ProductDetails = () => {
        }
        details()
     },[id])
+
+    const fetchProductById = async (id) => {
+        try {
+            const response = await axios.get(`http://localhost:4000/product/products/${id}`);
+            const data =  response.data;
+            return data; 
+        } catch (error) {
+            console.error('Error fetching product:', error);
+            return null; 
+        }
+    };
+
+    const addToCartProduct = async (id) => {
+        console.log(id)
+        const product = await fetchProductById(id);
+        if (product) {
+            setProducts(prevProducts => [...prevProducts, product]);
+        }
+    };
+
+    const goToCart = () => {
+        navigate('/cart', { state: { products } }); 
+    };
     return (
         <section className="py-5 my-5">
             <div className="container mx-auto lg:px-8">
@@ -28,13 +52,6 @@ const ProductDetails = () => {
                                 <img className="align-middle rounded-lg max-w-[25rem] max-h-[25rem]" src={data.image} alt="Product" />
                             </a>
                         </div>
-                        {/* <div className="flex justify-center mb-3 space-x-1">
-                            {['big1', 'big2', 'big3', 'big4', 'big'].map((img, idx) => (
-                                <a key={idx} href={`https://mdbcdn.b-cdn.net/img/bootstrap-ecommerce/items/detail1/${img}.webp`} target="_blank" rel="noopener noreferrer" className="border rounded">
-                                    <img width="60" height="60" className="rounded" src={`https://mdbcdn.b-cdn.net/img/bootstrap-ecommerce/items/detail1/${img}.webp`} alt="Thumb" />
-                                </a>
-                            ))}
-                        </div> */}
                     </aside>
                     <main className="w-full lg:w-1/2 px-4">
                         <div className="pl-0 lg:pl-3">
@@ -65,7 +82,8 @@ const ProductDetails = () => {
                             </div>
 
                             <div className="flex items-center mt-3 space-x-2">
-                                <a href="#" className="btn bg-blue-500 text-white shadow-0 px-4 py-2 rounded">Add to cart</a>
+                                <button className="btn bg-blue-500 text-white shadow-0 px-4 py-2 rounded" onClick={() => addToCartProduct(id)}>Add to cart</button>
+                                <button className="btn bg-blue-500 text-white shadow-0 px-4 py-2 rounded" onClick={goToCart}>Go to cart</button>
                             </div>
 
                             <div className="flex items-center mb-2 mt-4">
@@ -91,89 +109,6 @@ const ProductDetails = () => {
                         </div>
                     </main>
                 </div>
-
-                {/* <----- This is Reviews Components -----> */}
-
-                {/* <div className="ratings-wrapper">
-                    <div className="recommendText">
-                        <div className="verifiedIcon">
-                            <img src="https://images.bewakoof.com/web/ic-shield--check.svg" alt="Verified Icon" />
-                        </div> */}
-                        {/* <div className="percentageText">
-                            <p className="percentage">91%</p>
-                            <p>of verified buyers recommend this brand</p>
-                        </div>
-                    </div>
-                    <div className="d-flex">
-                        <div className="ratings d-flex flex-column mx-3">
-                            <span className="rtng">4.5</span>
-                            <div className="total-ratings">
-                                <p>7M+ ratings</p>
-                            </div>
-                            <div>
-                                <div className="d-flex">
-                                    <img className="mr-1" src="https://images.bewakoof.com/web/ic-star-mb-filled.svg" alt="full star icon" width="16" />
-                                    <img className="mr-1" src="https://images.bewakoof.com/web/ic-star-mb-filled.svg" alt="full star icon" width="16" />
-                                    <img className="mr-1" src="https://images.bewakoof.com/web/ic-star-mb-filled.svg" alt="full star icon" width="16" />
-                                    <img className="mr-1" src="https://images.bewakoof.com/web/ic-star-mb-filled.svg" alt="full star icon" width="16" />
-                                    <img className="mr-1" src="https://images.bewakoof.com/web/ic-star-mb--half.svg" alt="half star icon" width="16" />
-                                </div>
-                            </div>
-                        </div> */}
-                        {/* <div className="flex-grow-1">
-                            <div className="bar-wrpr">
-                                <div className="rtng-txt-wrpr">
-                                    <span className="rtng-txt">5</span>
-                                    <img className="star-img" src="https://images.bewakoof.com/web/fill-1-2x-1622112875.webp" alt="Star Icon" />
-                                </div>
-                                <div className="middle">
-                                    <div className="bar-container" style={{ width: '66%' }}></div>
-                                </div>
-                                <span className="noOfReviews">(5M+)</span>
-                            </div>
-                            <div className="bar-wrpr">
-                                <div className="rtng-txt-wrpr">
-                                    <span className="rtng-txt">4</span>
-                                    <img className="star-img" src="https://images.bewakoof.com/web/fill-1-2x-1622112875.webp" alt="Star Icon" />
-                                </div>
-                                <div className="middle">
-                                    <div className="bar-container" style={{ width: '24%' }}></div>
-                                </div>
-                                <span className="noOfReviews">(2M+)</span>
-                            </div>
-                            <div className="bar-wrpr">
-                                <div className="rtng-txt-wrpr">
-                                    <span className="rtng-txt">3</span>
-                                    <img className="star-img" src="https://images.bewakoof.com/web/fill-1-2x-1622112875.webp" alt="Star Icon" />
-                                </div>
-                                <div className="middle">
-                                    <div className="bar-container" style={{ width: '7%' }}></div>
-                                </div>
-                                <span className="noOfReviews">(558k+)</span>
-                            </div>
-                            <div className="bar-wrpr">
-                                <div className="rtng-txt-wrpr">
-                                    <span className="rtng-txt">2</span>
-                                    <img className="star-img" src="https://images.bewakoof.com/web/fill-1-2x-1622112875.webp" alt="Star Icon" />
-                                </div>
-                                <div className="middle">
-                                    <div className="bar-container" style={{ width: '3%' }}></div>
-                                </div>
-                                <span className="noOfReviews">(150k+)</span>
-                            </div>
-                            <div className="bar-wrpr">
-                                <div className="rtng-txt-wrpr">
-                                    <span className="rtng-txt">1</span>
-                                    <img className="star-img" src="https://images.bewakoof.com/web/fill-1-2x-1622112875.webp" alt="Star Icon" />
-                                </div>
-                                <div className="middle">
-                                    <div className="bar-container" style={{ width: '0%' }}></div>
-                                </div>
-                                <span className="noOfReviews">(1k+)</span>
-                            </div>
-                        </div> */}
-                    {/* </div>
-                </div> */}
             </div>
         </section>
     );

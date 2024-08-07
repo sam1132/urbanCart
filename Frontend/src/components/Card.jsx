@@ -7,7 +7,7 @@ const Card = ({ product }) => {
   const [liked, setLiked] = useState(false);
   const id = product.id
   const toggleLike = async(e) => {
-    e.stopPropagation()
+    e.stopPropagation();
     try {
       const token = localStorage.getItem('token')
       const config = {
@@ -37,14 +37,16 @@ const Card = ({ product }) => {
   return (
     <>
     <div className="max-w-[1140px] mx-auto mt-10">
-      <Link to={path}>
+     
       <div className="relative flex flex-col text-gray-700 bg-[#fef8f396] shadow-md shadow-gray-300 bg-clip-border rounded-xl w-80">
         <div className="cursor-pointer relative mx-4 mt-4 overflow-hidden text-gray-700 bg-white bg-clip-border rounded-xl h-72">
+        <Link to={path}>
           <img
             src={product.image}
             alt={product.name}
             className="object-cover w-full h-full"
           />
+          </Link>
           <div className="absolute top-4 right-4" onClick={toggleLike}>
             {liked ? (
               <i className="fas fa-heart text-red-500 text-2xl"></i>
@@ -76,7 +78,7 @@ const Card = ({ product }) => {
           </button>
         </div>
       </div>
-      </Link>
+      
     </div>
 
       {/* <div className="max-w-[1140px] mx-auto mt-10 ">
