@@ -34,7 +34,6 @@ export const orderCreation = async (req, res) => {
   };
   try {
     const response = await razorpay.orders.create(options);
-    console.log("Razorpay response:", response);
     res.status(200).json({
       id: response.id,
       currency: response.currency,

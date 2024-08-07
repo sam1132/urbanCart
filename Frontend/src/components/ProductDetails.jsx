@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
+import toast from 'react-hot-toast'
 const ProductDetails = () => {
     const {id} = useParams()
     const [data,setData] = useState({})
@@ -34,6 +35,7 @@ const ProductDetails = () => {
     const addToCartProduct = async (id) => {
         console.log(id)
         const product = await fetchProductById(id);
+        toast.success('Product added to cart')
         if (product) {
             setProducts(prevProducts => [...prevProducts, product]);
         }
