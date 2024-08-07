@@ -6,7 +6,8 @@ import categoryRoute from './route/category.route.js'
 import userRoute from './route/user.route.js'
 import wishlistRoute from './route/wishlist.route.js'
 import ProductRoute from './route/product.route.js'
-
+import myOrderRoute from './route/myOrder.route.js'
+import PaymentRoute from './route/payment.route.js'
 dotenv.config()
 const port = process.env.PORT || 4001
 const app = express()
@@ -19,6 +20,8 @@ app.use('/',categoryRoute)
 app.use('/user',userRoute)
 app.use('/product',ProductRoute)
 app.use('/wishlist',wishlistRoute)
+app.use('/api/myorders',myOrderRoute)
+app.use('/api/payment',PaymentRoute)
 
 app.listen(port, () => {
     console.log(`Server listening on port ${port}`);
