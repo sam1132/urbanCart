@@ -15,7 +15,6 @@ import { Toaster } from "react-hot-toast";
 import ProtectRoute from "./components/ProtectRoute";
 import Products from "./components/Products";
 import SpecificProduct from "./components/SpecificProduct";
-import GoogleLogin from "./components/GoogleLogin";
 import ProductDetails from "./components/ProductDetails";
 import PaymentGateway from "./components/PaymentGateway";
 function App() {
@@ -30,7 +29,7 @@ function App() {
           <Route path="/products" element={<Products/>}/>
           <Route path="/productsdetails/:id" element={<ProductDetails/>}/>
           <Route path="/products/:maincategory/:subCategory" element={<SpecificProduct/>}/>
-          <Route path="/googlelogin" element={<GoogleLogin/>}/>
+          //////////////////////////////////////////////////////////////////////
           <Route element={<ProtectRoute />}>
             <Route
               path="/Wishlist"
@@ -42,6 +41,7 @@ function App() {
             <Route path="/payment" element={<PaymentGateway />} />
             <Route path="/myorder" element={<Myorder />} />
           </Route>
+          ///////////////////////////////////////////////////////////////////////
           <Route path="/signin" element={<Signin />} />
 
           <Route path="/cards" element={<Card />} />

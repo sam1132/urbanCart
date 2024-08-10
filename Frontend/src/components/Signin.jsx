@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { MdEmail } from "react-icons/md";
 import { RiLockPasswordLine } from "react-icons/ri";
 import loginimg from "../assets/signin-up/signin-image.jpg";
@@ -7,6 +7,7 @@ import toast from "react-hot-toast";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 const Signin = () => {
+  const navigate = useNavigate();
   const [User, setUser] = useState({
     email: "",
     password: "",
@@ -18,7 +19,7 @@ const Signin = () => {
       [name]: value,
     }));
   };
-  const navigate = useNavigate();
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -41,6 +42,9 @@ const Signin = () => {
     } catch (error) {
       toast.error("Error login");
     }
+  };
+  const handleGoogleLogin = () => {
+    window.location.href = "http://localhost:4000/auth/google";
   };
   return (
     <>
@@ -93,7 +97,7 @@ const Signin = () => {
                 Log In
               </button>
               <div>
-                <div className="my-4 bg-[#007bff] font-bold cursor-pointer text-white rounded-md text-center p-2">
+                <div className="my-4 bg-[#007bff] font-bold cursor-pointer text-white rounded-md text-center p-2"  onClick={handleGoogleLogin}>
                   <p>
                     <span >Log in with google</span>
                   </p>
