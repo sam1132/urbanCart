@@ -17,6 +17,7 @@ import Products from "./components/Products";
 import SpecificProduct from "./components/SpecificProduct";
 import ProductDetails from "./components/ProductDetails";
 import PaymentGateway from "./components/PaymentGateway";
+import GoogleCallbackHandler from "./components/GoogleCallbackHandler";
 function App() {
   
   return (
@@ -43,7 +44,7 @@ function App() {
           </Route>
           ///////////////////////////////////////////////////////////////////////
           <Route path="/signin" element={<Signin />} />
-
+          <Route path="/auth/google/callback" element={<GoogleCallbackHandler />} />
           <Route path="/cards" element={<Card />} />
         </Routes>
         <Toaster />

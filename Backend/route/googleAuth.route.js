@@ -7,11 +7,11 @@ router.get('/google', passport.authenticate('google', { scope: ['profile', 'emai
 
 router.get('/google/callback', passport.authenticate('google', { failureRedirect: '/signin' }), (req, res) => {
     const token = jwt.sign({ id: req.user._id }, secret, { expiresIn: '1h' });
-    res.redirect(`http://localhost:5173/signin/?token=${token}`);});
+    res.redirect(`http://localhost:5173/auth/google/callback?token=${token}`);});
 
 router.get('/logout', (req, res) => {
   req.logout();
-  res.redirect('http://localhost:5173/login');
+  res.redirect('http://localhost:5173/signin');
 });
 
 export default router;
