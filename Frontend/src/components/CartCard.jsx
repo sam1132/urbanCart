@@ -15,6 +15,9 @@ const CartCard = ({ item }) => {
       <div className="pt-2">
         <p className="font-bold text-xl leading-tight text-gray-800">{item.productTitle}</p>
       </div>
+      <div className="pt-2">
+        <p className="font-bold text-xl leading-tight text-gray-800">Quantity {item.quantity}</p>
+      </div>
       <div className="w-full flex justify-between items-center pt-2 border-t border-gray-300">
       </div>
       <div className="w-full pt-2 text-gray-600 text-sm">

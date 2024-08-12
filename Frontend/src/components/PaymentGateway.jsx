@@ -56,11 +56,12 @@ const PaymentGateway = () => {
                                 productImage: item.image,
                                 productTitle: item.title,
                                 quantity: item.quantity,
+                                price:item.price,
                                 deliveryDate: new Date().toISOString()
                             })),
                             paymentDate: new Date().toISOString() 
                         };
-
+console.log(orderDetails)
                         await axios.post("http://localhost:4000/api/myorders/order",orderDetails,config);
                         setTimeout(() => {
                             navigate("/myorder");

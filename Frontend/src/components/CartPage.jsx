@@ -61,6 +61,7 @@ const CartPage = () => {
     };
 
     const handleCheckout = () => {
+        console.log(cartItems)
         navigate("/payment", {
             state: {
                 cartItems,
