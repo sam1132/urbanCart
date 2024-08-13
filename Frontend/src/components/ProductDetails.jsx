@@ -5,7 +5,6 @@ import toast from 'react-hot-toast'
 const ProductDetails = () => {
     const {id} = useParams()
     const [data,setData] = useState({})
-    const [error,setError] = useState()
     const [products, setProducts] = useState([]); 
     const navigate = useNavigate()
     useEffect(()=>{
@@ -33,7 +32,6 @@ const ProductDetails = () => {
     };
 
     const addToCartProduct = async (id) => {
-        console.log(id)
         const product = await fetchProductById(id);
         toast.success('Product added to cart')
         if (product) {
@@ -77,11 +75,6 @@ const ProductDetails = () => {
                             <p>
                                 {data.description}
                             </p>
-
-                            <div className="flex items-center mt-3 space-x-2">
-                                <label className="form-label" htmlFor="quantity">Quantity</label>
-                                <input type="number" className="form-control w-16 border border-gray-300 rounded px-2 py-1" defaultValue={1} min={1} />
-                            </div>
 
                             <div className="flex items-center mt-3 space-x-2">
                                 <button className="btn bg-blue-500 text-white shadow-0 px-4 py-2 rounded" onClick={() => addToCartProduct(id)}>Add to cart</button>

@@ -112,7 +112,7 @@ const CartPage = () => {
                                     type="text"
                                     value={item.quantity}
                                     readOnly
-                                    className="w-8 text-center border-t border-b border-gray-200"
+                                    className="w-8 text-center p-2 border-t border-b border-gray-200"
                                 />
                                 <button
                                     onClick={() => increaseQuantity(item.id)}
