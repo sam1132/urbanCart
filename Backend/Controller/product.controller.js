@@ -59,14 +59,14 @@ export const searchProduct = async (req, res) => {
   try {
     const { query, category } = req.query;
 
-    const searchCriteria = {
-      title: { $regex: query, $options: "i" }, 
-    };
-
+    const searchCriteria = {};
+    if (query) {
+      searchCriteria.title = { $regex: query, $options: "i" };
+    }
     if (category) {
       searchCriteria[`category.${category}`] = true;
     }
-console.log(searchCriteria)
+
     const products = await Product.find(searchCriteria);
     res.json(products);
   } catch (error) {

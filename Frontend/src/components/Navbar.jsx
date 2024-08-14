@@ -33,18 +33,17 @@ const Navbar = () => {
 
     const knownCategories = ["male", "women", "kids", "furniture", "books", "homedecore","sneakers","topwear","bottomwear"];
 
-    const searchTerms = searchQuery.split(" ");
+    const searchTerms = searchQuery.trim().split(" ");
+    console.log("searchterms",searchTerms)
     const possibleCategory = searchTerms[0].toLowerCase();
     let category = "";
     let query = searchQuery;
 
     if (knownCategories.includes(possibleCategory)) {
       category = possibleCategory; 
-      query = searchTerms.slice(1).join(" "); 
-      category = ""; 
+      query = searchTerms.slice(1); 
     }
     else {
-      category = ""; 
       query = searchQuery;
     }
     navigate(`/search?query=${query}&category=${category}`);

@@ -18,9 +18,8 @@ const Products = () => {
       setLoading(true);
       try {
         const response = await axios.get(
-          `http://localhost:4000/product/search/?query=${query}&category=${category}`
+          `http://localhost:4000/product/search?query=${query}&category=${category}`
         );
-        console.log(response.data)
         setProducts(response.data);
       } catch (error) {
         console.error("Error fetching search results:", error);
@@ -29,7 +28,7 @@ const Products = () => {
       }
     };
 
-    if (query) {
+    if (query || category) {
       fetchProducts();
     }
   }, [query, category]);
@@ -51,7 +50,9 @@ const Products = () => {
       <section className="max-w-[95rem] mx-auto px-4 md:px-6 lg:px-8">
         <div className="flex flex-wrap my-10">
           <h1 className="w-full text-2xl mb-6 font-bold text-center my-5">
-            Search Results for "{query}" in "{category || "All Categories"}"
+            {query
+              ? `Search Results for ${query} in ${category || "All Categories"}`
+              : `Showing results for ${category || "All Categories"}`}
           </h1>
           {loading ? (
             <p className="w-full text-center">Loading products...</p>
