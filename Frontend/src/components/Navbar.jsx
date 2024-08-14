@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { CgProfile } from "react-icons/cg";
-import { FaBoxArchive, FaHeart, FaBars,  } from "react-icons/fa6";
-import { FaTimes,FaSearch } from "react-icons/fa";
+import { FaBoxArchive, FaHeart, FaBars } from "react-icons/fa6";
+import { FaTimes, FaSearch } from "react-icons/fa";
 import { BsShopWindow } from "react-icons/bs";
 import logo from "../assets/Logo/urban.jpg";
 
@@ -14,15 +14,40 @@ const Navbar = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const token = localStorage.getItem('token');
+    const token = localStorage.getItem("token");
     if (token) {
       setIsAuthenticated(true);
     }
   }, []);
   const handleLogout = () => {
-    localStorage.removeItem('token');
+    localStorage.removeItem("token");
     setIsAuthenticated(false);
-    navigate('/signin');
+    navigate("/signin");
+  };
+  const [searchQuery, setSearchQuery] = useState("");
+  const handleInputChange = (e) => {
+    setSearchQuery(e.target.value);
+  };
+  const handleSearch = (e) => {
+    e.preventDefault();
+
+    const knownCategories = ["male", "women", "kids", "furniture", "books", "homedecore","sneakers","topwear","bottomwear"];
+
+    const searchTerms = searchQuery.split(" ");
+    const possibleCategory = searchTerms[0].toLowerCase();
+    let category = "";
+    let query = searchQuery;
+
+    if (knownCategories.includes(possibleCategory)) {
+      category = possibleCategory; 
+      query = searchTerms.slice(1).join(" "); 
+      category = ""; 
+    }
+    else {
+      category = ""; 
+      query = searchQuery;
+    }
+    navigate(`/search?query=${query}&category=${category}`);
   };
 
   return (
@@ -40,12 +65,14 @@ const Navbar = () => {
               </NavLink>
             </div>
             <div className="md:flex md:items-center md:ml-6">
-              <div className="relative">
-                <span className="absolute inset-y-0 left-3 flex items-center pl-3 cursor-pointer">
+              <div className="relative" >
+                <span onClick={handleSearch} className="absolute inset-y-0 left-3 flex items-center pl-3 cursor-pointer">
                   <FaSearch className="text-gray-500 " />
                 </span>
                 <input
                   type="text"
+                  value={searchQuery}
+                  onChange={handleInputChange}
                   className="bg-gray-100 ml-2 w-[200px] md:w-[260px] lg:w-[390px] focus:ring-0 border-none rounded-full pl-10 pr-4 py-2 focus:outline-none"
                   placeholder="Search products..."
                 />

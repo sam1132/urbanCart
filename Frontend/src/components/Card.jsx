@@ -3,6 +3,7 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 import axios from 'axios'
 import toast from 'react-hot-toast'
 import { Link } from "react-router-dom";
+import { FaRupeeSign } from "react-icons/fa";
 const Card = ({ product }) => {
   const [liked, setLiked] = useState(false);
   const id = product.id
@@ -61,8 +62,8 @@ const Card = ({ product }) => {
             <p className="block font-sans text-xl font-semibold leading-relaxed text-black truncate">
               {product.title}
             </p>
-            <p className="block font-sans text-2xl font-bold text-black leading-relaxed text-blue-gray-900">
-              ${product.price}
+            <p className=" flex items-center  font-sans text-2xl font-bold text-black leading-relaxed text-blue-gray-900">
+            <FaRupeeSign className="w-4 h-4" />{product.price}
             </p>
           </div>
           <p className="block font-sans text-md leading-6 font-normal text-gray-700 opacity-75">
