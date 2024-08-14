@@ -2,10 +2,12 @@ import React, { useState } from "react";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import axios from 'axios'
 import toast from 'react-hot-toast'
-import { Link } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import { FaRupeeSign } from "react-icons/fa";
+import { handleCart } from "./CartNavigation";
 const Card = ({ product }) => {
   const [liked, setLiked] = useState(false);
+  const [products, setProducts] = useState([]); 
   const id = product.id
   const toggleLike = async(e) => {
     e.stopPropagation();
@@ -29,6 +31,28 @@ const Card = ({ product }) => {
       }
     }
   };
+  const navigate = useNavigate()
+  const fetchProductById = async (id) => {
+    try {
+        const response = await axios.get(`http://localhost:4000/product/products/${id}`);
+        const data =  response.data;
+        return data; 
+    } catch (error) {
+        console.error('Error fetching product:', error);
+        return null; 
+    }
+};
+
+const addToCartProduct = async (id) => {
+    const product = await fetchProductById(id);
+    toast.success('Product added to cart')
+    if (product) {
+        setProducts(prevProducts => [...prevProducts, product]);
+    }
+};
+const goToCart = () => {
+  handleCart(navigate,products)
+};
  const path = `/productsdetails/${id}`
   const truncateDescription = (description, maxLength) => {
     if (description.length <= maxLength) return description;
@@ -71,11 +95,19 @@ const Card = ({ product }) => {
           </p>
         </div>
         <div className="p-6 pt-0">
-          <button
+          <button onClick={() => addToCartProduct(id)}
             className="bg-blue-700 text-white align-middle select-none font-sans font-bold text-center uppercase transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 px-6 rounded-lg shadow-gray-900/10 hover:shadow-gray-900/20 focus:opacity-[0.85] active:opacity-[0.85] active:shadow-none block w-full bg-blue-gray-900/10 text-blue-gray-900 shadow-none hover:scale-105 hover:shadow-none focus:scale-105 focus:shadow-none active:scale-100"
             type="button"
           >
             Add to Cart
+          </button>
+        </div>
+        <div className="p-6 pt-0">
+          <button onClick={() => goToCart()}
+            className="bg-blue-700 text-white align-middle select-none font-sans font-bold text-center uppercase transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 px-6 rounded-lg shadow-gray-900/10 hover:shadow-gray-900/20 focus:opacity-[0.85] active:opacity-[0.85] active:shadow-none block w-full bg-blue-gray-900/10 text-blue-gray-900 shadow-none hover:scale-105 hover:shadow-none focus:scale-105 focus:shadow-none active:scale-100"
+            type="button"
+          >
+            go to Cart
           </button>
         </div>
       </div>

@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
+import { handleCart } from './CartNavigation';
 import toast from 'react-hot-toast'
 const ProductDetails = () => {
     const {id} = useParams()
@@ -40,7 +41,7 @@ const ProductDetails = () => {
     };
 
     const goToCart = () => {
-        navigate('/cart', { state: { products } }); 
+        handleCart(navigate,products)
     };
     return (
         <section className="py-5 my-5">
