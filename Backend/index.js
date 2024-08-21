@@ -20,7 +20,6 @@ connectDb();
 const corsOptions = {
   origin: 'https://urban-cart-eight.vercel.app', 
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
-  allowedHeaders: ['Content-Type', 'Authorization'],
 };
 app.use(
   cors(corsOptions)
