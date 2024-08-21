@@ -72,7 +72,7 @@ const Navbar = () => {
                   type="text"
                   value={searchQuery}
                   onChange={handleInputChange}
-                  className="bg-gray-100 ml-2 w-[200px] md:w-[200px] lg:w-[390px] focus:ring-0 border-none rounded-full pl-10 pr-4 py-2 focus:outline-none"
+                  className="bg-gray-100 ml-2 w-[150px] md:w-[200px] lg:w-[390px] focus:ring-0 border-none rounded-full pl-10 pr-4 py-2 focus:outline-none"
                   placeholder="Search products..."
                 />
               </div>
