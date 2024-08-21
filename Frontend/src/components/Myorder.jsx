@@ -14,7 +14,7 @@ const MyOrder = () => {
     }
     const fetchOrders = async () => {
         try {
-            const response = await axios.get('http://localhost:4000/api/myorders/all',config);
+            const response = await axios.get('https://urban-cart-fh8j-l40awq7a3-sam113273gmailcoms-projects.vercel.app/api/myorders/all',config);
             setOrders(response.data);
             setLoading(false);
         } catch (error) {

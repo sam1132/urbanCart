@@ -19,7 +19,7 @@ const Profile = () => {
                     Authorization: `Bearer ${token}`, 
                   },
             }
-            const response = await axios.get("http://localhost:4000/user/details",config)
+            const response = await axios.get("https://urban-cart-fh8j-l40awq7a3-sam113273gmailcoms-projects.vercel.app/user/details",config)
             setUser(response.data)
         } catch (error) {
             toast.error("Error getting details")

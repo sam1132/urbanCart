@@ -24,7 +24,7 @@ const Signin = () => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "http://localhost:4000/user/login",
+        "https://urban-cart-fh8j-l40awq7a3-sam113273gmailcoms-projects.vercel.app/user/login",
         User
       );
       const token = response.data.token;
@@ -44,7 +44,7 @@ const Signin = () => {
     }
   };
   const handleGoogleLogin = () => {
-    window.location.href = "http://localhost:4000/auth/google";
+    window.location.href = "https://urban-cart-fh8j-l40awq7a3-sam113273gmailcoms-projects.vercel.app/auth/google";
   };
   return (
     <>

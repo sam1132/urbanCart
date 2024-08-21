@@ -18,7 +18,7 @@ const Products = () => {
       setLoading(true);
       try {
         const response = await axios.get(
-          `http://localhost:4000/product/search?query=${query}&category=${category}`
+          `https://urban-cart-fh8j-l40awq7a3-sam113273gmailcoms-projects.vercel.app/product/search?query=${query}&category=${category}`
         );
         setProducts(response.data);
       } catch (error) {
@@ -32,19 +32,7 @@ const Products = () => {
       fetchProducts();
     }
   }, [query, category]);
-  // useEffect(() => {
-  //   const fetchProducts = async () => {
-  //     try {
-  //       const response = await axios.get(
-  //         "http://localhost:4000/product/productlist"
-  //       );
-  //       setProducts(response.data);
-  //     } catch (error) {
-  //       toast.error("Error Setting Products");
-  //     }
-  //   };
-  //   fetchProducts();
-  // }, []);
+
   return (
     <>
       <section className="max-w-[95rem] mx-auto px-4 md:px-6 lg:px-8">

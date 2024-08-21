@@ -18,7 +18,7 @@ const Card = ({ product }) => {
             Authorization: `Bearer ${token}`, 
           },
     }
-      const response = await axios.post(`http://localhost:4000/wishlist/add/${id}`,{},config)
+      const response = await axios.post(`https://urban-cart-fh8j-l40awq7a3-sam113273gmailcoms-projects.vercel.app/wishlist/add/${id}`,{},config)
       if(response.status === 200){
         toast.success("Product added to wishlist")
         setLiked(!liked);
@@ -34,7 +34,7 @@ const Card = ({ product }) => {
   const navigate = useNavigate()
   const fetchProductById = async (id) => {
     try {
-        const response = await axios.get(`http://localhost:4000/product/products/${id}`);
+        const response = await axios.get(`https://urban-cart-fh8j-l40awq7a3-sam113273gmailcoms-projects.vercel.app/product/products/${id}`);
         const data =  response.data;
         return data; 
     } catch (error) {

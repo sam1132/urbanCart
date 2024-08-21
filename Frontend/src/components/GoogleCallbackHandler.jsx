@@ -18,7 +18,6 @@ const GoogleCallbackHandler = () => {
           },1000)
       } else {
         toast.error("No token received from the server.");
-        console.log("sign in yha se ja rha h");
         navigate("/signin");
       }
     }, 1000);

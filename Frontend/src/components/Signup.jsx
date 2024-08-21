@@ -68,7 +68,7 @@ const Signup = () => {
     });
 
    try {
-    const response = await axios.post('http://localhost:4000/user/signup',User)
+    const response = await axios.post('https://urban-cart-fh8j-l40awq7a3-sam113273gmailcoms-projects.vercel.app/user/signup',User)
     toast.success("Sign up successfull");
    } catch (error) {
     toast.error("User already exist")
