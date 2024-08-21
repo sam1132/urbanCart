@@ -10,7 +10,7 @@ const Home = () => {
   useEffect(() => {
     const getCategory = async () => {
       try {
-        const res = await axios.get("https://urban-cart-fh8j-l40awq7a3-sam113273gmailcoms-projects.vercel.app");
+        const res = await axios.get("https://urban-cart-fh8j-l40awq7a3-sam113273gmailcoms-projects.vercel.app/");
         setCategoryData(res.data);
       } catch (error) {
         console.log(error);
