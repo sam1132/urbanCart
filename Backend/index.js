@@ -43,6 +43,9 @@ app.use("/api/myorders", myOrderRoute);
 app.use("/api/payment", PaymentRoute);
 app.use("/auth", googleRoute);
 
+app.get('/',(req,res)=>[
+  res.send("CODE runing")
+])
 app.listen(port, () => {
   console.log(`Server listening on port ${port}`);
 });
