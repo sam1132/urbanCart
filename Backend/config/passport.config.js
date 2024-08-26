@@ -6,7 +6,7 @@ dotenv.config()
 passport.use(new GoogleStrategy({
   clientID: process.env.CLIENTIDG,
   clientSecret: process.env.CLIENTIDSG,
-  callbackURL: 'http://localhost:4000/auth/google/callback',
+  callbackURL: 'https://urbancart-b989.onrender.com/auth/google/callback',
 }, async (accessToken, refreshToken, profile, done) => {
   try {
     let user = await User.findOne({ googleId: profile.id });

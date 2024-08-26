@@ -46,6 +46,7 @@ export const login = async (req, res) => {
     const token = generateToken(user._id);
     res.status(200).json({message:"Login successfull",token})
   } catch (error) {
+    console.log(error)
     res.status(500).json({ message: "server error" });
   }
 };
