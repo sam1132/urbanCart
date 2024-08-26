@@ -6,11 +6,12 @@ import SpecialOffer from "./SpecialOffer";
 import { useNavigate } from 'react-router-dom'
 const Home = () => {
   const [categoryData, setCategoryData] = useState([]);
+  const BaseUrl = "https://urbancart-b989.onrender.com"
   const navigate = useNavigate();
   useEffect(() => {
     const getCategory = async () => {
       try {
-        const res = await axios.get("/");
+        const res = await axios.get(`${BaseUrl}/`);
         setCategoryData(res.data);
       } catch (error) {
         console.log(error);

@@ -12,6 +12,7 @@ const Profile = () => {
     phoneNo: "",
     pincode: "",
   });
+  const BaseUrl = "https://urbancart-b989.onrender.com"
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
@@ -48,7 +49,7 @@ const Profile = () => {
           },
         };
         const response = await axios.put(
-          "/user/completeProfile",
+          `${BaseUrl}/user/completeProfile`,
           formData,
           config
         );

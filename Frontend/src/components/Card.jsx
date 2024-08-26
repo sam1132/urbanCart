@@ -6,6 +6,7 @@ import { Link, Navigate, useNavigate } from "react-router-dom";
 import { FaRupeeSign } from "react-icons/fa";
 import { handleCart } from "./CartNavigation";
 const Card = ({ product }) => {
+  const BaseUrl = "https://urbancart-b989.onrender.com"
   const [liked, setLiked] = useState(false);
   const [products, setProducts] = useState([]); 
   const id = product.id
@@ -18,7 +19,7 @@ const Card = ({ product }) => {
             Authorization: `Bearer ${token}`, 
           },
     }
-      const response = await axios.post(`https://urban-cart-fh8j-l40awq7a3-sam113273gmailcoms-projects.vercel.app/wishlist/add/${id}`,{},config)
+      const response = await axios.post(`${BaseUrl}/wishlist/add/${id}`,{},config)
       if(response.status === 200){
         toast.success("Product added to wishlist")
         setLiked(!liked);
@@ -34,7 +35,7 @@ const Card = ({ product }) => {
   const navigate = useNavigate()
   const fetchProductById = async (id) => {
     try {
-        const response = await axios.get(`/product/products/${id}`);
+        const response = await axios.get(`${BaseUrl}/product/products/${id}`);
         const data =  response.data;
         return data; 
     } catch (error) {

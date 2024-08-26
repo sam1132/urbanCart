@@ -13,6 +13,7 @@ const loadScript = (src) => {
 };
 
 const PaymentGateway = () => {
+    const BaseUrl = "https://urbancart-b989.onrender.com"
     const location = useLocation();
     const navigate = useNavigate();
     const { cartItems, grandTotal, subtotal, salesTax, deliveryCharges } = location.state || {};
@@ -35,7 +36,7 @@ const PaymentGateway = () => {
             },
       }
         try {
-            const response = await axios.post("/api/payment/razorpay", {
+            const response = await axios.post(`${BaseUrl}/api/payment/razorpay`, {
                 amount: grandTotal
             },config);
 
@@ -62,7 +63,7 @@ const PaymentGateway = () => {
                             paymentDate: new Date().toISOString() 
                         };
 console.log(orderDetails)
-                        await axios.post("http://localhost:4000/api/myorders/order",orderDetails,config);
+                        await axios.post(`${BaseUrl}/api/myorders/order`,orderDetails,config);
                         setTimeout(() => {
                             navigate("/myorder");
                         }, 3000);

@@ -8,6 +8,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 const Signin = () => {
   const navigate = useNavigate();
+  const BaseUrl = "https://urbancart-b989.onrender.com"
   const [User, setUser] = useState({
     email: "",
     password: "",
@@ -24,7 +25,7 @@ const Signin = () => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "/user/login",
+        `${BaseUrl}/user/login`,
         User
       );
       const token = response.data.token;
@@ -44,7 +45,7 @@ const Signin = () => {
     }
   };
   const handleGoogleLogin = () => {
-    window.location.href = "https://urban-cart-fh8j-l40awq7a3-sam113273gmailcoms-projects.vercel.app/auth/google";
+    window.location.href = `${BaseUrl}/auth/google`;
   };
   return (
     <>

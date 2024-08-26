@@ -6,6 +6,7 @@ import {  useNavigate } from 'react-router-dom';
 const Profile = () => {
  const [user,setUser] = useState('')
  const navigate = useNavigate();
+ const BaseUrl = "https://urbancart-b989.onrender.com"
  useEffect(()=>{
     const getUser = async ()=>{
         try {
@@ -19,7 +20,7 @@ const Profile = () => {
                     Authorization: `Bearer ${token}`, 
                   },
             }
-            const response = await axios.get("/user/details",config)
+            const response = await axios.get(`${BaseUrl}/user/details`,config)
             setUser(response.data)
         } catch (error) {
             toast.error("Error getting details")

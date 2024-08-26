@@ -7,10 +7,11 @@ const SpecificProduct = () => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const BaseUrl = "https://urbancart-b989.onrender.com"
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await axios.get(`/product/${maincategory}/${subCategory}`);
+        const response = await axios.get(`${BaseUrl}/product/${maincategory}/${subCategory}`);
         setProducts(response.data); 
         
       } catch (err) {

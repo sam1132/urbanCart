@@ -26,6 +26,7 @@ const Signup = () => {
       [name]: value,
     }));
   };
+  const BaseUrl = "https://urbancart-b989.onrender.com"
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -68,7 +69,7 @@ const Signup = () => {
     });
 
    try {
-    const response = await axios.post('/user/signup',User)
+    const response = await axios.post(`${BaseUrl}/user/signup`,User)
     toast.success("Sign up successfull");
    } catch (error) {
     toast.error("User already exist")

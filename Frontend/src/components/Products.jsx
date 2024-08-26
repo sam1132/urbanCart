@@ -12,13 +12,13 @@ const Products = () => {
   const query = useQuery().get("query");
   const category = useQuery().get("category");
   const [Products, setProducts] = useState([]);
-
+  const BaseUrl = "https://urbancart-b989.onrender.com"
   useEffect(() => {
     const fetchProducts = async () => {
       setLoading(true);
       try {
         const response = await axios.get(
-          `/product/search?query=${query}&category=${category}`
+          `${BaseUrl}/product/search?query=${query}&category=${category}`
         );
         setProducts(response.data);
       } catch (error) {
