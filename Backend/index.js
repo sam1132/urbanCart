@@ -17,13 +17,9 @@ const app = express();
 
 connectDb();
 //routes
-const corsOptions = {
-  origin: 'https://urban-cart-eight.vercel.app', 
-  methods: ['GET', 'POST', 'PUT', 'DELETE'],
-  credentials:true,
-};
+
 app.use(
-  cors(corsOptions)
+  cors()
 );
 app.use(express.json());
 app.use(
