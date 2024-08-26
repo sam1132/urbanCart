@@ -63,7 +63,7 @@ const PaymentGateway = () => {
                             paymentDate: new Date().toISOString() 
                         };
 console.log(orderDetails)
-                        await axios.post(`${BaseUrl}/api/myorders/order`,orderDetails,config);
+                        await axios.post("https://urbancart-b989.onrender.com/api/myorders/order",orderDetails,config);
                         setTimeout(() => {
                             navigate("/myorder");
                         }, 3000);
