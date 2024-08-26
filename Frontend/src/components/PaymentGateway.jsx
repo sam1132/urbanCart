@@ -35,7 +35,7 @@ const PaymentGateway = () => {
             },
       }
         try {
-            const response = await axios.post("https://urban-cart-fh8j-l40awq7a3-sam113273gmailcoms-projects.vercel.app/api/payment/razorpay", {
+            const response = await axios.post("/api/payment/razorpay", {
                 amount: grandTotal
             },config);
 

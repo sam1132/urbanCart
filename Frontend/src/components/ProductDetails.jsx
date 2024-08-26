@@ -11,7 +11,7 @@ const ProductDetails = () => {
     useEffect(()=>{
        const details = async ()=>{
         try {
-            const response = await axios.get(`https://urban-cart-fh8j-l40awq7a3-sam113273gmailcoms-projects.vercel.app/product/products/${id}`)
+            const response = await axios.get(`/product/products/${id}`)
             setData(response.data)
             
         } catch (error) {
@@ -23,7 +23,7 @@ const ProductDetails = () => {
 
     const fetchProductById = async (id) => {
         try {
-            const response = await axios.get(`https://urban-cart-fh8j-l40awq7a3-sam113273gmailcoms-projects.vercel.app/product/products/${id}`);
+            const response = await axios.get(`/product/products/${id}`);
             const data =  response.data;
             return data; 
         } catch (error) {

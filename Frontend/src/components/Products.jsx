@@ -18,7 +18,7 @@ const Products = () => {
       setLoading(true);
       try {
         const response = await axios.get(
-          `https://urban-cart-fh8j-l40awq7a3-sam113273gmailcoms-projects.vercel.app/product/search?query=${query}&category=${category}`
+          `/product/search?query=${query}&category=${category}`
         );
         setProducts(response.data);
       } catch (error) {

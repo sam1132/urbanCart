@@ -24,7 +24,7 @@ const Signin = () => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "https://urban-cart-fh8j-l40awq7a3-sam113273gmailcoms-projects.vercel.app/user/login",
+        "/user/login",
         User
       );
       const token = response.data.token;

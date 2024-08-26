@@ -48,7 +48,7 @@ const Profile = () => {
           },
         };
         const response = await axios.put(
-          "https://urban-cart-fh8j-l40awq7a3-sam113273gmailcoms-projects.vercel.app/user/completeProfile",
+          "/user/completeProfile",
           formData,
           config
         );
